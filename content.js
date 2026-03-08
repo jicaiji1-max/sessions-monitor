@@ -870,7 +870,8 @@
     }, { passive: true });
     
     addEventListener(document, 'mouseup', function() {
-      resizeState.isResizing = false;
+      resizeStateBR.isResizing = false;
+      resizeStateBL.isResizing = false;
     });
     
     // 切换展开/收起
