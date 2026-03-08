@@ -167,7 +167,8 @@
           currentContextWindow
         );
         
-        if (s.aborted) {
+        // 排除 subagent 的 aborted（只统计主 session 的 aborted）
+        if (s.aborted && !s.key.includes(':subagent:') && !s.key.includes(':run:')) {
           agentsData[agentId].abortedCount++;
           agentsData[agentId].status = 'aborted';
         }
