@@ -548,10 +548,13 @@
         abortedLabel.textContent = agent.abortedCount > 0 ? '(aborted: ' + agent.abortedCount + ')' : '';
       }
       
-      // 重新绑定点击事件
-      row3.removeEventListener('click');
+      // 重新绑定点击事件（移除旧的监听器）
       if (agent.sessions.length > 0 && onToggleSessions) {
-        row3.addEventListener('click', function(e) {
+        // 克隆节点来移除旧的事件监听器
+        var newRow3 = row3.cloneNode(true);
+        row3.parentNode.replaceChild(newRow3, row3);
+        // 添加新的事件监听器
+        newRow3.addEventListener('click', function(e) {
           e.stopPropagation();
           onToggleSessions();
         });
