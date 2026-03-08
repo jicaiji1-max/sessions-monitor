@@ -688,7 +688,8 @@
     var panel = createElement('div', '');
     panel.id = PANEL_ID;
     panel.style.width = PANEL_DEFAULT_WIDTH + 'px';
-    panel.style.height = PANEL_DEFAULT_HEIGHT + 'px';
+    panel.style.height = 'auto';  // 收起时高度自适应
+    panel.style.maxHeight = PANEL_MAX_HEIGHT + 'px';
     
     // 创建头部
     var header = createElement('div', 'monitor-header');
@@ -817,8 +818,8 @@
       resizeStateBR.lastX = e.clientX;
       resizeStateBR.lastY = e.clientY;
       
-      var newWidth = (parseFloat(panel.style.width) || PANEL_DEFAULT_WIDTH) + deltaX;
-      var newHeight = (parseFloat(panel.style.height) || PANEL_DEFAULT_HEIGHT) + deltaY;
+      var newWidth = (parseFloat(panel.style.width) || rect.width) + deltaX;
+      var newHeight = (parseFloat(panel.style.height) || rect.height) + deltaY;
       
       newWidth = Math.max(PANEL_MIN_WIDTH, newWidth);
       newHeight = Math.max(PANEL_MIN_HEIGHT, Math.min(newHeight, PANEL_MAX_HEIGHT));
