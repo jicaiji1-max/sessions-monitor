@@ -877,11 +877,11 @@
       isExpanded = !isExpanded;
       if (isExpanded) {
         // 展开：显示内容区域
-        content.style.display = 'block';
+        content.classList.remove('collapsed');
         toggleBtn.textContent = '−';
       } else {
         // 收起：隐藏内容区域，保留头部
-        content.style.display = 'none';
+        content.classList.add('collapsed');
         toggleBtn.textContent = '+';
       }
     });
@@ -931,8 +931,14 @@
         color: #fff;
       }
       .monitor-content {
-        height: calc(100% - 50px);
+        height: auto;
+        max-height: calc(600px - 50px);
         overflow-y: auto;
+        transition: all 0.2s;
+      }
+      .monitor-content.collapsed {
+        height: 0;
+        overflow: hidden;
       }
       .monitor-body {
         padding: 16px;
