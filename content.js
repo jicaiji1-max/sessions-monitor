@@ -172,9 +172,16 @@
           agentsData[agentId].status = 'aborted';
         }
         
+        // 优先使用有有效 model 值的 session（避免 model 为 '-' 的情况）
         if (s.updatedAt > agentsData[agentId].lastUpdate) {
           agentsData[agentId].lastUpdate = s.updatedAt;
-          agentsData[agentId].model = s.model || agentsData[agentId].model;
+          if (s.model && s.model !== '-') {
+            agentsData[agentId].model = s.model;
+          }
+        }
+        // 如果当前 session 有有效 model，也更新（兜底）
+        if (s.model && s.model !== '-' && agentsData[agentId].model === '-') {
+          agentsData[agentId].model = s.model;
         }
         
         var fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
