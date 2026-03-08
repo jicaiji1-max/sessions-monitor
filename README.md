@@ -1,9 +1,19 @@
-# Sessions Monitor - OpenClaw 会话监控面板
+# Agents Monitor - OpenClaw 会话监控面板
 
 > **一句话介绍**: 这是一个 Chrome 浏览器扩展，安装后会在你的 OpenClaw 页面右上角显示一个监控面板，实时展示所有 AI 助手（Agent）的工作状态、使用的模型、Tokens 消耗等信息。
 
 ![Version](https://img.shields.io/badge/version-1.0.7-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+---
+
+## ⚡ 快速安装
+
+**懒得看文档？直接把仓库链接丢给你的 AI 助手（比如我），告诉它："帮我安装这个"，它会自己搞定！**
+
+```
+https://github.com/jicaiji1-max/openclaw-monitor-extension
+```
 
 ---
 
@@ -101,85 +111,20 @@
 
 ---
 
-## 📸 效果预览
-
-安装后，你的 OpenClaw 页面右上角会显示这样一个监控面板：
-
-```
-┌─────────────────────────────────────────┐
-│ 🤖 Sessions Monitor              [−]    │
-├─────────────────────────────────────────┤
-│ ┌─────────────────────────────────────┐ │
-│ │ main (主助手)               qwen... │ │
-│ │                           🟢 运行中 │ │
-│ └─────────────────────────────────────┘ │
-│ ┌─────────────────────────────────────┐ │
-│ │ programmer (代码助手)       qwen... │ │
-│ │                           🟡 空闲   │ │
-│ └─────────────────────────────────────┘ │
-│                                         │
-│ [刷新（10 秒自动刷新）]                  │
-└─────────────────────────────────────────┘
-```
-
-**面板功能**:
-- 📊 显示所有 AI 助手的实时状态
-- 🔄 每 10 秒自动刷新数据
-- 🎨 可以拖拽移动位置、调整大小
-- 🔍 点击卡片可以展开查看详情（Tokens 使用、会话列表等）
-
----
-
-## 🎯 这个扩展能帮你做什么？
-
-如果你使用 OpenClaw 管理多个 AI 助手，这个扩展可以帮你：
-
-1. **一眼看到所有助手在干什么** - 哪个在运行、哪个在空闲
-2. **监控资源使用** - 每个助手用了多少 Tokens，Context 还剩多少
-3. **快速定位问题** - 如果有助手出错（aborted），红色标记立刻能看到
-4. **无需刷新页面** - 数据自动更新，不干扰你正常工作
-
-**适合谁用**:
-- ✅ 同时运行多个 AI 助手的 OpenClaw 用户
-- ✅ 想监控助手状态和 Token 消耗的用户
-- ✅ 需要知道哪个助手在忙、哪个空闲的用户
-
-**不适合谁**:
-- ❌ 只用一个助手、不关心状态的用户
-- ❌ 不想安装 Chrome 扩展的用户
-
----
-
 ## 📦 安装教程（小白友好）
 
-### 第一步：准备文件
+### 第一步：下载扩展
 
-**方法 A：如果你会用 Git（推荐）**
-
-打开终端（Mac 用户按 `Cmd+Space` 搜索 "终端"），输入以下命令：
+**方法 A：使用 Git（推荐）**
 
 ```bash
-# 1. 进入 OpenClaw 的 skills 目录
 cd ~/.openclaw/skills
-
-# 2. 下载这个扩展
 git clone https://github.com/jicaiji1-max/openclaw-monitor-extension.git
-
-# 3. 确认下载成功
-ls openclaw-monitor-extension/openclaw-monitor-extension
 ```
 
-如果看到 `manifest.json`、`content.js` 等文件，说明下载成功。
+**方法 B：手动下载**
 
-**方法 B：如果你不会用 Git**
-
-1. 打开浏览器，访问：https://github.com/jicaiji1-max/openclaw-monitor-extension
-2. 点击绿色的 **Code** 按钮
-3. 选择 **Download ZIP**
-4. 下载完成后解压
-5. 把解压后的 `openclaw-monitor-extension` 文件夹移动到 `~/.openclaw/skills/` 目录下
-
----
+访问 https://github.com/jicaiji1-max/openclaw-monitor-extension 下载 ZIP 并解压到 `~/.openclaw/skills/`
 
 ### 第二步：启动后台服务
 
@@ -195,33 +140,7 @@ cd ~/.openclaw/skills/openclaw-monitor-extension/openclaw-monitor-extension
 node openclaw-sessions-api.js
 ```
 
-3. 如果看到类似下面的输出，说明启动成功：
-```
-📊 Sessions API
-📂 读取目录：/Users/你的用户名/.openclaw
-🌐 端口：18790
-🔗 API: http://127.0.0.1:18790/api/sessions
-
-✅ 服务已启动
-```
-
-**重要**: 这个服务需要一直运行，不要关闭终端窗口。如果想后台运行，按 `Ctrl+C` 停止后，用下面命令重新启动：
-
-```bash
-node openclaw-sessions-api.js &
-```
-
-（末尾的 `&` 符号表示后台运行）
-
-**Windows 用户**:
-
-1. 按 `Win+R`，输入 `cmd`，回车
-2. 输入以下命令：
-
-```cmd
-cd %USERPROFILE%\.openclaw\skills\openclaw-monitor-extension\openclaw-monitor-extension
-node openclaw-sessions-api.js
-```
+**注意**: 此扩展直接调用 OpenClaw 主服务的 API，无需额外启动后台服务。OpenClaw 默认运行在 18789 端口。
 
 ---
 
