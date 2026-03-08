@@ -878,11 +878,10 @@
       if (isExpanded) {
         // 展开：显示整个面板
         panel.style.display = 'block';
-        content.style.display = 'block';
         toggleBtn.textContent = '−';
       } else {
-        // 收起：只隐藏内容区域，保留头部
-        content.style.display = 'none';
+        // 收起：隐藏整个面板
+        panel.style.display = 'none';
         toggleBtn.textContent = '+';
       }
     });
