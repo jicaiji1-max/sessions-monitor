@@ -163,7 +163,7 @@
 cd ~/.openclaw/skills
 
 # 2. 下载这个扩展
-git clone https://github.com/jicaiji1-max/workspace-programmer.git sessions-monitor
+git clone https://github.com/jicaiji1-max/openclaw-monitor-extension.git
 
 # 3. 确认下载成功
 ls sessions-monitor/openclaw-monitor-extension
@@ -173,7 +173,7 @@ ls sessions-monitor/openclaw-monitor-extension
 
 **方法 B：如果你不会用 Git**
 
-1. 打开浏览器，访问：https://github.com/jicaiji1-max/workspace-programmer
+1. 打开浏览器，访问：https://github.com/jicaiji1-max/openclaw-monitor-extension
 2. 点击绿色的 **Code** 按钮
 3. 选择 **Download ZIP**
 4. 下载完成后解压
@@ -524,7 +524,7 @@ openclaw-monitor-extension/
 如果上面的常见问题没解决你的问题：
 
 1. **查看 GitHub Issues**
-   - 访问：https://github.com/jicaiji1-max/workspace-programmer/issues
+   - 访问：https://github.com/jicaiji1-max/openclaw-monitor-extension/issues
    - 搜索有没有人遇到类似问题
 
 2. **提交新 Issue**

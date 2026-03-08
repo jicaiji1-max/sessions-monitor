@@ -143,7 +143,7 @@ Open Terminal (Mac users press `Cmd+Space` and search "Terminal"), then run:
 cd ~/.openclaw/skills
 
 # 2. Clone this repository
-git clone https://github.com/jicaiji1-max/sessions-monitor.git
+git clone https://github.com/jicaiji1-max/openclaw-monitor-extension.git
 
 # 3. Verify download success
 ls sessions-monitor/openclaw-monitor-extension
@@ -153,7 +153,7 @@ If you see files like `manifest.json`, `content.js`, the download succeeded.
 
 **Method B: Manual Download (No Git)**
 
-1. Open browser and visit: https://github.com/jicaiji1-max/sessions-monitor
+1. Open browser and visit: https://github.com/jicaiji1-max/openclaw-monitor-extension
 2. Click the green **Code** button
 3. Select **Download ZIP**
 4. Extract the downloaded ZIP file
@@ -504,7 +504,7 @@ openclaw-monitor-extension/
 If Common Issues above didn't solve your problem:
 
 1. **Check GitHub Issues**
-   - Visit: https://github.com/jicaiji1-max/sessions-monitor/issues
+   - Visit: https://github.com/jicaiji1-max/openclaw-monitor-extension/issues
    - Search for similar issues
 
 2. **Submit New Issue**
