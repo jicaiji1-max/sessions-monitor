@@ -130,7 +130,7 @@ git clone https://github.com/jicaiji1-max/openclaw-monitor-extension.git
 
 这个扩展需要一个后台服务来读取数据。
 
-**Mac 用户**:
+**推荐方式（使用启动脚本）**:
 
 1. 打开终端（按 `Cmd+Space` 搜索 "终端"）
 2. 进入扩展目录：
@@ -139,15 +139,71 @@ git clone https://github.com/jicaiji1-max/openclaw-monitor-extension.git
 cd ~/.openclaw/skills/openclaw-monitor-extension
 ```
 
-3. 启动 API 服务：
+3. 给启动脚本添加执行权限：
 
 ```bash
-node openclaw-sessions-api.js
+chmod +x start-api.sh
 ```
 
-**注意**: 这个服务需要一直运行。如果想后台运行，使用：
+4. 启动 API 服务：
+
 ```bash
+./start-api.sh
+```
+
+**脚本功能：**
+- ✅ 检查服务是否已运行（避免重复启动）
+- ✅ 记录进程 PID 到 `/tmp/openclaw-monitor-api.pid`
+- ✅ 后台运行，关闭终端也不会停止
+
+**传统方式（不推荐）**:
+
+```bash
+# 直接启动（终端关闭后服务会停止）
+node openclaw-sessions-api.js
+
+# 后台运行
 node openclaw-sessions-api.js &
+```
+
+---
+
+#### 🔄 开机自动启动（可选）
+
+如果想让 API 服务开机自动启动：
+
+**Mac 用户：**
+
+1. 复制 LaunchAgent 模板：
+
+```bash
+cp ai.openclaw.monitor-api.plist.template ~/Library/LaunchAgents/ai.openclaw.monitor-api.plist
+```
+
+2. 编辑配置文件，替换路径：
+
+```bash
+# 用文本编辑器打开
+open -e ~/Library/LaunchAgents/ai.openclaw.monitor-api.plist
+
+# 将 REPLACE_WITH_YOUR_PATH 替换为实际路径，例如：
+# /Users/你的用户名/.openclaw/skills/openclaw-monitor-extension
+```
+
+3. 加载并启动：
+
+```bash
+launchctl load ~/Library/LaunchAgents/ai.openclaw.monitor-api.plist
+```
+
+**查看日志：**
+```bash
+tail -f /tmp/openclaw-monitor-api.log
+```
+
+**停止服务：**
+```bash
+launchctl unload ~/Library/LaunchAgents/ai.openclaw.monitor-api.plist
 ```
 
 ---
